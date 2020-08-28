@@ -52,3 +52,6 @@
 It can only do that if the memory after that block isn’t already in use. If there isn’t room to grow the block, realloc() instead allocates a new block of memory of the desired size, copies over the old bytes, frees the old block, and then returns a pointer to the new block. Remember, that’s exactly the behavior we want for our dynamic array.
 
 Because computers are finite lumps of matter and not the perfect mathematical abstractions computer science theory would have us believe, allocation can fail if there isn’t enough memory and realloc() will return NULL.
+
+#### Disassembler
+A disassembler takes a blob of machine code, it spits out a textual listing of the instructions.s
