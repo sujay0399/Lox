@@ -54,4 +54,5 @@ It can only do that if the memory after that block isn’t already in use. If th
 Because computers are finite lumps of matter and not the perfect mathematical abstractions computer science theory would have us believe, allocation can fail if there isn’t enough memory and realloc() will return NULL.
 
 #### Disassembler
-A disassembler takes a blob of machine code, it spits out a textual listing of the instructions.s
+A disassembler takes a blob of machine code, it spits out a textual listing of the instructions.
+Looping in **disassembleChunk** instruction is a little different. To increment the code we do not increment the offset values because instrucions can have different sizes.
