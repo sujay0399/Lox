@@ -54,5 +54,17 @@ It can only do that if the memory after that block isn’t already in use. If th
 Because computers are finite lumps of matter and not the perfect mathematical abstractions computer science theory would have us believe, allocation can fail if there isn’t enough memory and realloc() will return NULL.
 
 #### Disassembler
+
 A disassembler takes a blob of machine code, it spits out a textual listing of the instructions.
 Looping in **disassembleChunk** instruction is a little different. To increment the code we do not increment the offset values because instrucions can have different sizes.
+
+## How to represent constants in our VM
+
+- **Immediate instructions** - For small fixed sized values like **integers** many instruction sets store the value in code stream right after the op-code. These are called **immediate instructions** because the bits for the values are immediately after op-code.
+  This does not work well for large or variable sized-constants like strings.
+- In a native compiler to machine code, those bigger constants get stored in a separate “constant data” region in the binary executable. Then, the instruction to load a constant has an address or offset pointing to where the value is stored in that section.
+- **Constant pool** - Most virtual machines do something similar. For example, the Java Virtual Machine [associates a constant pool](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.4) with each compiled class.
+- Using typedef to represent values allows to abstract how the values are concretely implemented in C. That way, we can change that representation without needing to go back and fix existing code that passes around values.
+- In lox, the constant pool is a dynamic array of values.
+- **Instruction Formats** - When implementing constants, we know that a single op-code is not enough to know which constant to load. Thus, we allow instructions to have operands. We store them as binary data immediately after the op-code in the instruction stream and lets us parameterize what the instruction does.
+  Each opcode determines how many operand bytes it has and what they mean. Each time we add a new instruction to clox, we specify what its operands look like—its instruction format.
