@@ -24,7 +24,7 @@ static void repl()
 	}
 }
 
-static char *readFile(const *char path)
+static char *readFile(const char *path)
 {
 	FILE *file = fopen(path, "rb");
 	if (file == NULL)
@@ -59,7 +59,7 @@ static char *readFile(const *char path)
 	return buffer;
 }
 
-static void runFile(const *char path)
+static void runFile(const char *path)
 {
 	const *source = readFile(path);
 	InterpretResult result = interpret(source);
