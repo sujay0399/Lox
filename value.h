@@ -24,7 +24,7 @@ typedef struct
 // We need these macros to see that these values are of the approiate type
 #define IS_BOOL(value) ((value).type == VAL_BOOL)
 #define IS_NIL(value) ((value).type == VAL_NIL)
-#define IS_NUMBER(value) ((value).type == VAL_NUMBER)
+#define IS_NUMBER(value)  ((value).type == VAL_NUMBER)
 
 #define AS_BOOL(value) ((value).as.boolean)
 #define AS_NUMBER(value) ((value).as.number)
