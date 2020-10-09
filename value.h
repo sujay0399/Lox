@@ -21,8 +21,6 @@ typedef struct
 
 } Value;
 
-typedef double Value;
-
 typedef struct
 {
     int capacity;
