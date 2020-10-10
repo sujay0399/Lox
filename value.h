@@ -12,7 +12,7 @@ typedef enum
 
 typedef struct
 {
-    ValueType value;
+    ValueType type;
     union
     {
         bool boolean;
